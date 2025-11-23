@@ -69,7 +69,7 @@ export default function Header() {
                 flex flex-col justify-center
               ">
               <Pulsating visible={true} className="text-[var(--mauve)]">
-                <StyledDiv className="text-[var(--light-white)]">Patientez</StyledDiv>
+                <StyledDiv className="text-[var(--light-white)]">Chargement</StyledDiv>
               </Pulsating>
             </div>;
   }
