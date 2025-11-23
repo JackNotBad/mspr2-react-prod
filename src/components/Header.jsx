@@ -4,13 +4,27 @@ import { Link } from "react-router-dom";
 import { sitePublicPath } from '../utils';
 import Navbar from "../Navbar";
 import Logo from "../assets/Accueil/logo-canopees.png";
+import styled from "styled-components";
+import Pulsating from "../pulsating";
 import close from "../assets/close.png";
+
+const StyledDiv = styled.div`
+  align-items: center;
+  background: ${({ color }) => color || "#ffb100"};
+  border-radius: 32px;
+  color: white;
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  width: 130px;
+`;
 
 export default function Header() {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [page, setPage] = useState([]);  
   const [isLoading, setIsLoading] = useState(true);
+
   
 
   useEffect(() => {
@@ -48,7 +62,16 @@ export default function Header() {
   const title = titles[location.pathname] || "Canopées";
 
   if (isLoading) {
-    return <div className="text-center py-8 text-[var(--blue)]">Chargement en cours...</div>;
+    return  <div className="
+                absolute inset-0 h-full
+                bg-[url(./assets/Accueil/hero-bg.jpg)]
+                bg-no-repeat bg-cover bg-fixed
+                flex flex-col justify-center
+              ">
+              <Pulsating visible={true} className="text-[var(--mauve)]">
+                <StyledDiv className="text-[var(--light-white)]">Patientez</StyledDiv>
+              </Pulsating>
+            </div>;
   }
   return (
     <header className="relative w-full h-125 text-[var(--light-white)]">
